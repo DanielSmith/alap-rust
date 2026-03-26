@@ -1,10 +1,10 @@
 # Alap Expression Parser — Rust
 
-Server-side Rust port of the Alap expression parser (`src/core/ExpressionParser.ts`). Use this to resolve Alap expressions in Rust servers without a Node.js sidecar.
+[Alap](https://github.com/DanielSmith/alap) is a JavaScript library that turns links into dynamic menus with multiple curated targets. This is the server-side Rust port of the expression parser, enabling expression resolution in Rust servers without a Node.js sidecar.
 
 ## What's included
 
-- **`alap-core` crate** — Recursive descent parser for the Alap expression grammar, macro expansion, regex search, config merging, URL sanitization, regex validation
+- **`alap` crate** — Recursive descent parser for the Alap expression grammar, macro expansion, regex search, config merging, URL sanitization, regex validation
 
 ## What's NOT included
 
@@ -29,7 +29,7 @@ item1, item2              # item IDs (comma-separated)
 ## Usage
 
 ```rust
-use alap_core::{Config, ExpressionParser, resolve, cherry_pick, merge_configs, sanitize_url};
+use alap::{Config, ExpressionParser, resolve, cherry_pick, merge_configs, sanitize_url};
 
 let config: Config = serde_json::from_str(r#"{
     "allLinks": {
@@ -65,13 +65,12 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-alap-core = { path = "path/to/src/other-languages/rust" }
+alap = "0.1"
 ```
 
 ## Tests
 
 ```bash
-cd src/other-languages/rust
 cargo test
 cargo clippy
 ```
@@ -80,4 +79,4 @@ cargo clippy
 
 ## Example Server
 
-- [axum-sqlite](../../../examples/servers/axum-sqlite/) — Rust + Axum + rusqlite, all 7 endpoints
+- [axum-sqlite](https://github.com/DanielSmith/alap/tree/main/examples/servers/axum-sqlite) — Rust + Axum + rusqlite, all 7 endpoints
